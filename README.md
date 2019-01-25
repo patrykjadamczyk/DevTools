@@ -1,5 +1,2 @@
-# Project Football Manager
+# Project Developer Tools
 ## Webpage
-https://boiling-sierra-45698.herokuapp.com
-
-https://skpilka.azurewebsites.net

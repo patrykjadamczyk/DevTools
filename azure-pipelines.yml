@@ -18,9 +18,13 @@ steps:
 - script: |
     npm install
     npm install --prefix client
-    npm run build --prefix client
   displayName: 'Installing Server Packages and Client Packages'
 
 - script: |
     npm run build --prefix client
   displayName: 'Building React'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publishing Build'
+  inputs:
+    PathtoPublish: '$(System.DefaultWorkingDirectory)'

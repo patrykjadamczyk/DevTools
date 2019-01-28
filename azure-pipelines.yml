@@ -19,4 +19,8 @@ steps:
     npm install
     npm install --prefix client
     npm run build --prefix client
-  displayName: 'npm install and build'
+  displayName: 'Installing Server Packages and Client Packages'
+
+- script: |
+    npm run build --prefix client
+  displayName: 'Building React'

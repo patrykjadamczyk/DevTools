@@ -30,13 +30,20 @@ steps:
 #    PathtoPublish: '$(System.DefaultWorkingDirectory)'
     
 - task: CopyFiles@2
-  displayName: 'Copying files ready to build'
+  displayName: 'Copying files except client'
   inputs:
     SourceFolder: '$(System.DefaultWorkingDirectory)'
     Contents: |
-      *
-      /!(client)/**/*
-      /client/build/*
+      **/*
+      !client/**/*
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+- task: CopyFiles@2
+  displayName: 'Copying client build files'
+  inputs:
+    SourceFolder: '$(System.DefaultWorkingDirectory)'
+    Contents: |
+      client/build/*
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
 - task: PublishBuildArtifacts@1

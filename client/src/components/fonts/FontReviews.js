@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-class Dashboard extends Component {
+class FontReviews extends Component {
   componentDidMount() {
     if (this.props.auth.isAuthenticated === false) {
       this.props.history.push("/");
@@ -10,11 +10,11 @@ class Dashboard extends Component {
   }
   render() {
     return (
-      <div className="dashboard-box">
+      <div className="font-reviews-box">
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <h1>Narzędziownik</h1>
+              <h1>Prezentacja czcionki</h1>
               
             </div>
           </div>
@@ -24,7 +24,7 @@ class Dashboard extends Component {
   }
 }
 
-Dashboard.propTypes = {
+FontReviews.propTypes = {
   auth: PropTypes.object.isRequired
 };
 
@@ -32,4 +32,4 @@ const mapStateToProps = state => ({
   auth: state.auth
 });
 
-export default connect(mapStateToProps)(Dashboard);
+export default connect(mapStateToProps)(FontReviews);

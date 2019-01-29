@@ -5,6 +5,7 @@ const passport = require("passport");
 const path = require("path");
 
 const users = require("./routes/api/users");
+const fonts = require("./routes/api/fonts");
 
 const app = express();
 
@@ -36,6 +37,7 @@ app.listen(port, () => console.log(`server running on port ${port}`));
 
 // Use Routes
 app.use("/api/users", users);
+app.use("/api/fonts", fonts);
 
 // serv assets if in production
 if (process.env.NODE_ENV === "production") {

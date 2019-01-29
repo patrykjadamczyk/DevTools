@@ -12,6 +12,7 @@ import Dashboard from "./components/dashboard/Dashboard";
 import Landing from "./components/layout/Landing";
 import Login from "./components/auth/Login";
 // import Register from "./components/auth/Register";
+import Fonts from "./components/fonts/Fonts"
 
 import "./App.scss";
 
@@ -43,6 +44,7 @@ class App extends Component {
               <Route exact path="/" component={Landing} />
               <Route exact path="/dashboard" component={Dashboard} />
               {/* <Route exact path="/register" component={Register} /> */}
+              <Route exact path="/fonts" component={Fonts} />
               <Route exact path="/login" component={Login} />
             </div>
             <Footer />

@@ -1,25 +1,38 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import FontForm from "./FontForm";
 import FontReviews from "./FontReviews"
-//import { getFonts } from "../../actions/teamActions";
+import Spinner from "../common/spinner";
+import { getFonts } from "../../actions/fontActions";
+import FontFeed from "../fonts/FontFeed";
+import FontAddForm from "../fonts/FontAddForm"
 
 class Fonts extends Component {
   componentDidMount() {
     if (this.props.auth.isAuthenticated === false) {
       this.props.history.push("/");
     }
-  //  this.props.getFonts();
+    this.props.getFonts();
   }
   render() {
+    const { fonts, loading } = this.props;
+
+    let fontContent;
+
+    if(fonts === null || loading || fonts.length === 0 ){
+      fontContent = <Spinner />;
+    }else{
+      fontContent = <FontFeed fonts={fonts} />
+    }
+
     return (
-      <div className="feed fonts-box">
+      <div className="fonts-box">
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-                <FontForm />
-                <FontReviews />
+              <FontAddForm />
+              { fontContent }
+              <FontReviews />
             </div>
           </div>
         </div>
@@ -29,17 +42,16 @@ class Fonts extends Component {
 }
 
 Fonts.propTypes = {
-//   font: PropTypes.object.isRequired,
-//   getFonts: PropTypes.func.isRequired,
+  getFonts: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
- // font: state.font,
+  fonts: state.font.fonts,
   auth: state.auth
 });
 
 export default connect(
   mapStateToProps,
-//   { getFonts }
+   { getFonts }
 )(Fonts);

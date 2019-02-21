@@ -7,9 +7,10 @@ const FontSchema = new Schema({
     type: String,
     required: true
   },
-  path: {
-    type: String,
-    required: true
-  }
+  types:[
+    {
+      family: { type: String, required: false }, path: { type: String, required: false}
+    }
+  ]
 });
 module.exports = Font = mongoose.model("font", FontSchema);

@@ -40,10 +40,10 @@ router.post(
     // if (!isValid) {
     //   return res.status(400).json(errors);
     // }
-
+//console.log(req.body.types)
     const newFont = new Font({
       name: req.body.name,
-      path: req.body.path
+        types: req.body.types
     });
 
     newFont.save().then(font => res.json(font));

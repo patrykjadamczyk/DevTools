@@ -6,6 +6,7 @@ const path = require("path");
 
 const users = require("./routes/api/users");
 const fonts = require("./routes/api/fonts");
+const files = require("./routes/api/files");
 
 const app = express();
 
@@ -36,6 +37,7 @@ const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`server running on port ${port}`));
 
 // Use Routes
+app.use("/api/files", files);
 app.use("/api/users", users);
 app.use("/api/fonts", fonts);
 

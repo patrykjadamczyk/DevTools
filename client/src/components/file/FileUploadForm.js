@@ -23,10 +23,12 @@ class FileUploadForm extends Component {
           header: { 'content-type': 'multipart/from-data' }
         }
 
-        acceptedFiles.map(file => {
-            file.dest = 'image path';
-        })
+        // acceptedFiles.map(file => {
+        //     file.dest = 'image';
+        //     return file;
+        // })
 
+        formData.append("dest","image");
         formData.append("file", acceptedFiles[0]);
         
         // const data = formData.getAll('file');
